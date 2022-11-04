@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TicketListComponent } from './components/ticket-list/ticket-list.component';
 import { CreateTicketComponent } from './components/create-ticket/create-ticket.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,13 +21,9 @@ import { TicketDetailComponent } from './components/ticket-detail/ticket-detail.
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
-    NoopAnimationsModule,
-    FormsModule,
     CommonModule,
     HttpClientModule,
-    ReactiveFormsModule ,
     MaterialModule ,
     SharedModule
   ],

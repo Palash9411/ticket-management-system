@@ -6,25 +6,23 @@ import { StorageService } from './storage.service';
 })
 export class TicketService {
 
-  constructor(private storage : StorageService) { }
+  constructor(private storage: StorageService) { }
 
-  
-  private id :number = 0 ;
+  private id: number = 0;
 
-
-  setIdOnReload(){
+  setIdOnReload() {
     let list = JSON.parse(this.storage.get('ticketList') || '{}')
     list?.length ? this.storage.sendDatatoComponent(list) : []
-     this.id = list?.length ?  list.length : 0 ;
+    this.id = list?.length ? list.length : 0;
   }
   //private method to generate uniqueId for each ticket 
-  public generatId() : number{
-    this.id++ ;
-    return this.id ;
+  public generatId(): number {
+    this.id++;
+    return this.id;
+  }
+  // method to set back id when ticket is cancelled 
+  public createTicketCanceled(): void {
+    this.id = this.id - 1;
   }
 
-  public createTicketCanceled(): void {
-    this.id = this.id - 1  ;
-  }
-  
 }

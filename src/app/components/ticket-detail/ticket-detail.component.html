@@ -1,1 +1,11 @@
-<p>ticket-detail works!</p>
+<div class="main-container">
+    <mat-card class="form-container">
+        <mat-card-title>Update Ticket </mat-card-title>
+        <ng-content *ngTemplateOutlet="showForm">
+        </ng-content>
+    </mat-card>
+</div>
+
+<ng-template #showForm>
+    <app-form [formValue]="formVal" [buttonTitle]="'Update'"></app-form>
+</ng-template>

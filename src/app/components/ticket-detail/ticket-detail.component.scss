@@ -1,0 +1,33 @@
+:host {
+    .mat-card-title{
+      text-align: center;
+    }
+  }
+  .main-container{
+  
+      height: 100vh;
+      width: 100vw;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      .form-container{
+          padding: 24px;
+          width: 40%;
+         
+          .btn{
+              margin-left: 2%;
+          }
+      }
+      
+     
+  }
+  
+  @media only screen and (max-width){
+       .main-container{
+          display: flex;
+       }
+       .form-container{
+          width: 100%;
+      }
+  }
+  
