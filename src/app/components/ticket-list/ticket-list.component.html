@@ -1,0 +1,17 @@
+<div class="parent-container">
+    <div class="option-container">
+        <div>
+            <mat-label>search</mat-label>
+            <input matInput >
+        </div>
+        <button mat-raised-button [routerLink]="['/create-ticket']" color="primary">Create New Ticket</button>
+    </div>
+
+    <ng-content *ngTemplateOutlet="listTemp"></ng-content>
+</div>
+
+<ng-template #listTemp>
+    <ng-container *ngIf="(storage.ticketList$ | async)as tickets">
+        <app-table [ticketList]="tickets" [displayedColumns]="displayedColumns"></app-table>
+    </ng-container>
+</ng-template>
