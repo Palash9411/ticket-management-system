@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilterDataPipe } from './pipes/filterPipe/filter-data.pipe';
+import {MatSortModule} from '@angular/material/sort';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FilterDataPipe } from './pipes/filterPipe/filter-data.pipe';
     MatSelectModule,
     ReactiveFormsModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSortModule
   ],
   exports: [CustomDatePipe, TableComponent, FormComponent,FilterDataPipe]
 })

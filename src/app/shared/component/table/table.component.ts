@@ -2,8 +2,7 @@ import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, E
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Ticket } from 'src/app/models';
-import { debug } from 'console';
-
+import {MatSort} from '@angular/material/sort';
 
 
 @Component({
@@ -20,25 +19,29 @@ export class TableComponent implements OnInit,OnChanges,AfterViewInit {
   @Output() openUserTicketDetails: EventEmitter<number> = new EventEmitter()
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
+  @ViewChild(MatSort) sort!: MatSort;
   dataSource: any;
   ngOnChanges(changes: SimpleChanges) :void {
     // to reset  the dataSource and pagination value of the tabel on Input updation 
     if (changes['ticketList'].currentValue) {
       this.dataSource = new MatTableDataSource<Ticket>(changes['ticketList'].currentValue);
       this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     }
   }
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<Ticket>(this.ticketList);
+    this.dataSource.sort = this.sort;
   }
   ngAfterViewInit() : void {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
   // triggered when user clicks update button 
   openUserDetails(id: number): void {
     this.openUserTicketDetails.emit(id);
   }
+  
 }
 
 
