@@ -10,6 +10,7 @@ import { HttpClientModule} from '@angular/common/http' ;
 import { MaterialModule } from './material.module';
 import { SharedModule } from './shared/shared.module';
 import { TicketDetailComponent } from './components/ticket-detail/ticket-detail.component';
+import { SaerchTicketComponent } from './components/ticket-list/search/saerch-ticket/saerch-ticket.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { TicketDetailComponent } from './components/ticket-detail/ticket-detail.
     AppComponent,
     TicketListComponent,
     CreateTicketComponent,
-    TicketDetailComponent
+    TicketDetailComponent ,
+    SaerchTicketComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,9 @@ import { TicketDetailComponent } from './components/ticket-detail/ticket-detail.
     CommonModule,
     HttpClientModule,
     MaterialModule ,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

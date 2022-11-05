@@ -1,7 +1,13 @@
-:host .mat-form-field {
+:host {
+    .mat-form-field {
     display: block;
+    }
+    .mat-raised-button{
+        min-width: 100px ;
+    }
 }
 
 .btn {
     margin-left: 2%;
+    width: 100px;
 }

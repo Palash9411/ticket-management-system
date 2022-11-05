@@ -1,8 +1,7 @@
 <div class="parent-container">
     <div class="option-container">
         <div>
-            <mat-label>search</mat-label>
-            <input matInput >
+            <app-saerch-ticket (seachedText)="filterText($event)"></app-saerch-ticket>
         </div>
         <button mat-raised-button [routerLink]="['/create-ticket']" color="primary">Create New Ticket</button>
     </div>
@@ -12,6 +11,6 @@
 
 <ng-template #listTemp>
     <ng-container *ngIf="(storage.ticketList$ | async)as tickets">
-        <app-table [ticketList]="tickets" [displayedColumns]="displayedColumns" (openUserTicketDetails)="navigateToUserData($event)"></app-table>
+        <app-table [ticketList]="tickets | filterData : filteredText" [displayedColumns]="displayedColumns" (openUserTicketDetails)="navigateToUserData($event)"></app-table>
     </ng-container>
 </ng-template>
