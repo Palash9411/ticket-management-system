@@ -14,14 +14,17 @@ export class CreateTicketComponent implements OnInit {
     public storage: StorageService,
     private router: Router) { }
 
-  public initialFormVal: Ticket = {id : this.ticketService.generatId() , status : 'Open' , description :'' ,title :'' ,createDate : new Date()}
+  public initialFormVal: Ticket = { id: this.ticketService.generatId(), status: 'Open', description: '', title: '', createDate: new Date() }
+
   ngOnInit(): void {
   }
-  userCanceled(): void{
+  // method called when user clicks on cancel while creating ticket 
+  userCanceled(): void {
     this.ticketService.createTicketCanceled();
     this.router.navigate(['./tickets']);
   }
-  onUserUpdation(data : {value : Ticket ; actionType : string}){
+  // method called when user creates ticket 
+  onUserCreation(data: { value: Ticket; actionType: string }) {
     this.storage.chekTicketListExists(data.value);
     this.router.navigate(['./tickets']);
   }

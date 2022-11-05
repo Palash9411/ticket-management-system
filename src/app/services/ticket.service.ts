@@ -12,6 +12,7 @@ export class TicketService {
 
   private id: number = 0;
 
+  // calling it on Reload
   setIdOnReload() {
     let list = JSON.parse(this.storage.get('ticketList') || '{}')
     list?.length ? this.storage.sendDatatoComponent(list) : []

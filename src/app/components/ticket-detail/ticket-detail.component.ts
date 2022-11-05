@@ -11,34 +11,36 @@ import { TicketService } from 'src/app/services/ticket.service';
 })
 export class TicketDetailComponent implements OnInit {
 
-  constructor(private storage: StorageService, 
-    private route: ActivatedRoute ,
+  constructor(private storage: StorageService,
+    private route: ActivatedRoute,
     private ticketService: TicketService,
     private router: Router) { }
-  
-  public routeSub: Subscription | null = null ;
+
+  public routeSub: Subscription | null = null;
   public formVal: Ticket = { id: 0, status: 'Open', description: '', title: '', createDate: new Date() };
 
   ngOnInit(): void {
+    // getting localStorage data
     let ticketList = JSON.parse(this.storage.get('ticketList') || '{}');
     this.setFormVal(ticketList);
-
   }
-  setFormVal(list : Ticket[]) : void {
+  // method triggered to get id from router params and finding from localstorage Data
+  setFormVal(list: Ticket[]): void {
     this.routeSub = this.route.params.subscribe((params) => {
       this.formVal = list.find(ticket => ticket.id == params['id']) as Ticket
     })
   }
-  
-  ngOnDestroy() :void {
-    this.routeSub?.unsubscribe();
-  }
-  userCanceled(): void{
+  // method called when user clicks on cancel while creating ticket 
+  userCanceled(): void {
     this.ticketService.createTicketCanceled();
     this.router.navigate(['./tickets']);
   }
-  onUserUpdation(data : {value : Ticket ; actionType : string}){
+  // method called when user updates ticket 
+  onUserUpdation(data: { value: Ticket; actionType: string }) {
     this.storage.chekTicketListExists(data.value, data.actionType);
     this.router.navigate(['./tickets']);
+  }
+  ngOnDestroy(): void {
+    this.routeSub?.unsubscribe();
   }
 }

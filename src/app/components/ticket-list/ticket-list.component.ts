@@ -14,18 +14,18 @@ export class TicketListComponent implements OnInit {
   constructor(private ticketService: TicketService,
     public storage: StorageService,
     private router: Router) { }
-    
+
   public displayedColumns: string[] = ['id', 'title', 'description', 'status', 'createDate', 'actions'];
-  public filteredText : string = ''
+  public filteredText: string = ''
   ngOnInit(): void {
-    this.ticketService.setIdOnReload();
+    // this.ticketService.setIdOnReload();
   }
   // navigate to single ticket information 
   navigateToUserData(id: number) {
     this.router.navigate(['/tickets/' + id])
   }
-
-  filterText(text:string) : void{
-    this.filteredText=text ;
+  // setting user text to filter using pipe
+  filterText(text: string): void {
+    this.filteredText = text;
   }
 }

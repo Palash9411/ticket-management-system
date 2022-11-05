@@ -11,6 +11,9 @@ import { MaterialModule } from './material.module';
 import { SharedModule } from './shared/shared.module';
 import { TicketDetailComponent } from './components/ticket-detail/ticket-detail.component';
 import { SaerchTicketComponent } from './components/ticket-list/search/saerch-ticket/saerch-ticket.component';
+import { FilterPipeModule } from './shared/pipes/filterPipe/filter-pipe.module';
+import { CustomDatePipeModule } from './shared/pipes/datePipe/custom-date.pipe.module';
+
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { SaerchTicketComponent } from './components/ticket-list/search/saerch-ti
     MaterialModule ,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CustomDatePipeModule,
+    FilterPipeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

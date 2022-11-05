@@ -19,7 +19,7 @@ export class StorageService {
     return this.storage.getItem(key);
   }
 
-  set(key: string, value: string): void {
+  private set(key: string, value: string): void {
     this.storage.setItem(key, value);
   }
 
@@ -28,19 +28,19 @@ export class StorageService {
   }
 
   // method if ticketListExists
-  updateTicketList(value: Ticket, str?: string): void {
+  private updateTicketList(value: Ticket, str?: string): void {
     let currentList = JSON.parse(this.get('ticketList') || '{}');
     let updatedList = str ? this.updateIndex(currentList, value) : [...currentList, value];
     this.sendDatatoComponent(updatedList);
     this.set('ticketList', JSON.stringify(updatedList));
   }
   // update method for ticket 
-  updateIndex(list: Ticket[], val: Ticket): Array<Ticket> {
+  private updateIndex(list: Ticket[], val: Ticket): Array<Ticket> {
     list[val.id - 1] = val;
     return [...list];
   }
   // initialize new ticketList
-  initiateTicketList(value: Ticket): void {
+  private initiateTicketList(value: Ticket): void {
     let arr = [];
     arr.push(value);
     this.sendDatatoComponent(arr);

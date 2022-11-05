@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, E
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Ticket } from 'src/app/models';
-import {MatSort} from '@angular/material/sort';
+import { MatSort } from '@angular/material/sort';
 
 
 @Component({
@@ -11,7 +11,7 @@ import {MatSort} from '@angular/material/sort';
   styleUrls: ['./table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TableComponent implements OnInit,OnChanges,AfterViewInit {
+export class TableComponent implements OnInit, OnChanges, AfterViewInit {
 
   constructor() { }
   @Input() ticketList: Ticket[] = [];
@@ -21,7 +21,8 @@ export class TableComponent implements OnInit,OnChanges,AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   dataSource: any;
-  ngOnChanges(changes: SimpleChanges) :void {
+  
+  ngOnChanges(changes: SimpleChanges): void {
     // to reset  the dataSource and pagination value of the tabel on Input updation 
     if (changes['ticketList'].currentValue) {
       this.dataSource = new MatTableDataSource<Ticket>(changes['ticketList'].currentValue);
@@ -29,11 +30,10 @@ export class TableComponent implements OnInit,OnChanges,AfterViewInit {
       this.dataSource.sort = this.sort;
     }
   }
+
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<Ticket>(this.ticketList);
-    this.dataSource.sort = this.sort;
   }
-  ngAfterViewInit() : void {
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -41,7 +41,7 @@ export class TableComponent implements OnInit,OnChanges,AfterViewInit {
   openUserDetails(id: number): void {
     this.openUserTicketDetails.emit(id);
   }
-  
+
 }
 
 

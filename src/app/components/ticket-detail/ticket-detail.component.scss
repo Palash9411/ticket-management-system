@@ -22,12 +22,13 @@
      
   }
   
-  @media only screen and (max-width){
+  @media only screen and (max-width:767px){
        .main-container{
           display: flex;
+          .form-container{
+            width: 80%;
+        }
        }
-       .form-container{
-          width: 100%;
-      }
+      
   }
   

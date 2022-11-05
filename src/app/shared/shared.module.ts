@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CustomDatePipe } from './pipes/datePipe/custom-date.pipe';
 import { TableComponent } from './component/table/table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -10,12 +9,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FilterDataPipe } from './pipes/filterPipe/filter-data.pipe';
-import {MatSortModule} from '@angular/material/sort';
+import { MatSortModule } from '@angular/material/sort';
+import { CustomDatePipeModule } from './pipes/datePipe/custom-date.pipe.module';
 
 
 @NgModule({
-  declarations: [CustomDatePipe, TableComponent, FormComponent, FilterDataPipe],
+  declarations: [TableComponent, FormComponent],
   imports: [
     CommonModule,
     MatPaginatorModule,
@@ -26,8 +25,9 @@ import {MatSortModule} from '@angular/material/sort';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatSortModule
+    MatSortModule,
+    CustomDatePipeModule
   ],
-  exports: [CustomDatePipe, TableComponent, FormComponent,FilterDataPipe]
+  exports: [TableComponent, FormComponent]
 })
 export class SharedModule { }
