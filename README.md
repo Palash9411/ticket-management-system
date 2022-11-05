@@ -1,6 +1,13 @@
 # TicketManagement
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
+1.System to view tickets , create ticket and see details of the ticket to update .
+2.[Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
+
+## Assumptions 
+
+1.TimeZone - IST(Indian Standard Time ) used .
+2.Created a update button on list screen for updating a ticket .
+3.Mat Sort implemented for sorting , hover on label and click to sort .
 
 ## Development server
 
@@ -25,3 +32,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
