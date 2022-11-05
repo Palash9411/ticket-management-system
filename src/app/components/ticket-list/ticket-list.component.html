@@ -12,6 +12,6 @@
 
 <ng-template #listTemp>
     <ng-container *ngIf="(storage.ticketList$ | async)as tickets">
-        <app-table [ticketList]="tickets" [displayedColumns]="displayedColumns"></app-table>
+        <app-table [ticketList]="tickets" [displayedColumns]="displayedColumns" (openUserTicketDetails)="navigateToUserData($event)"></app-table>
     </ng-container>
 </ng-template>

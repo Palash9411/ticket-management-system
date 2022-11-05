@@ -1,29 +1,28 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Ticket } from 'src/app/models';
-import { StorageService } from 'src/app/services/storage.service';
-import { TicketService } from 'src/app/services/ticket.service';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  styleUrls: ['./form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormComponent implements OnInit {
 
-  constructor(private fb: FormBuilder,
-    private ticketService: TicketService,
-    private router: Router,
-    private storage: StorageService) { }
+  constructor(private fb: FormBuilder) { }
 
   public ticketForm!: FormGroup;
 
-  @Input() formValue: Ticket = { id: 0, status: 'Open', description: '', title: '', createDate: new Date() }
-
   statusList: Array<string> = ['Open', 'In progress', 'Closed', 'Deferred'];
 
+  @Input() formValue: Ticket = { id: 0, status: 'Open', description: '', title: '', createDate: new Date() }
+
   @Input() buttonTitle: string = 'Save';
+  
+  @Output() onUserSubmit  : EventEmitter<{value : Ticket ; actionType : string}> = new EventEmitter() ;
+
+  @Output() onCancel : EventEmitter<null>   = new EventEmitter() ;
 
   ngOnInit(): void {
     // reactive form setup 
@@ -37,13 +36,11 @@ export class FormComponent implements OnInit {
   }
   // method will be called on creating ticket successfully
   onSubmit(str?: string): void {
-    this.storage.chekTicketListExists(this.ticketForm.getRawValue(), str ? str : '');
-    this.router.navigate(['./tickets']);
+    this.onUserSubmit.emit({value : this.ticketForm.getRawValue() , actionType : str? str : ''})
   }
 
   //method will be called when user cancels ticket creation 
   onUserCancel(): void {
-    this.ticketService.createTicketCanceled();
-    this.router.navigate(['./tickets']);
+    this.onCancel.emit()
   }
 }

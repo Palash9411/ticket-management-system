@@ -7,5 +7,5 @@
 </div>
 
 <ng-template #showForm>
-    <app-form [formValue]="formVal" [buttonTitle]="'Update'"></app-form>
+    <app-form [formValue]="formVal" [buttonTitle]="'Update'" (onUserSubmit)="onUserUpdation($event)" (onCancel)="userCanceled()"></app-form>
 </ng-template>

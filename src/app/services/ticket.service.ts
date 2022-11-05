@@ -6,7 +6,9 @@ import { StorageService } from './storage.service';
 })
 export class TicketService {
 
-  constructor(private storage: StorageService) { }
+  constructor(private storage: StorageService) {
+    this.setIdOnReload()
+  }
 
   private id: number = 0;
 
