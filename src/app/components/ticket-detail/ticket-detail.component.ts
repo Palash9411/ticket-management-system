@@ -32,7 +32,6 @@ export class TicketDetailComponent implements OnInit {
   }
   // method called when user clicks on cancel while creating ticket 
   userCanceled(): void {
-    this.ticketService.createTicketCanceled();
     this.router.navigate(['./tickets']);
   }
   // method called when user updates ticket 
