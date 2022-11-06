@@ -1,41 +1,99 @@
-<form [formGroup]="ticketForm" (ngSubmit)="onSubmit(buttonTitle=='Update'? 'Update' :'')" class="form">
-    <div>
-        <mat-form-field class="form-element">
-            <mat-label>Id</mat-label>
-            <input matInput formControlName="id">
-        </mat-form-field>
+<form
+  [formGroup]="ticketForm"
+  (ngSubmit)="onSubmit(buttonTitle == 'Update' ? 'Update' : '')"
+  class="form"
+>
+  <div>
+    <mat-form-field class="form-element" appearance="outline">
+      <mat-label>Id</mat-label>
+      <input matInput formControlName="id" />
+    </mat-form-field>
 
-        <mat-form-field class="form-element">
-            <input matInput placeholder="Title" formControlName="title">
-            <mat-error *ngIf="!ticketForm.controls['title'].valid && ticketForm.controls['title'].touched">
-                `Title cannot be more than 128 characters`
-            </mat-error>
-        </mat-form-field>
+    <mat-form-field class="form-element" appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Title" formControlName="title" />
+      <mat-error
+        *ngIf="
+          !ticketForm.controls['title'].valid &&
+          ticketForm.controls['title'].touched &&
+          ticketForm.controls['title'].hasError('required')
+        "
+      >
+        Title is required.
+      </mat-error>
+      <mat-error
+        *ngIf="
+          !ticketForm.controls['title'].valid &&
+          ticketForm.controls['title'].touched &&
+          ticketForm.controls['title'].hasError('maxlength')
+        "
+      >
+        Title cannot be more than 128 characters.
+      </mat-error>
+    </mat-form-field>
 
-        <mat-form-field class="form-element">
-            <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2"
-                matAutosizeMaxRows="5" formControlName="description"></textarea>
-            <mat-error *ngIf="!ticketForm.controls['description'].valid && ticketForm.controls['description'].touched">
-                Description cannot be more than 1024 characters
-            </mat-error>
-        </mat-form-field>
+    <mat-form-field class="form-element" appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        placeholder="Description"
+        matTextareaAutosize
+        matAutosizeMinRows="2"
+        matAutosizeMaxRows="5"
+        formControlName="description"
+      ></textarea>
+      <mat-error
+        *ngIf="
+          !ticketForm.controls['description'].valid &&
+          ticketForm.controls['description'].touched &&
+          ticketForm.controls['description'].hasError('required')
+        "
+      >
+        Description is required.
+      </mat-error>
+      <mat-error
+        *ngIf="
+          !ticketForm.controls['description'].valid &&
+          ticketForm.controls['description'].touched &&
+          ticketForm.controls['description'].hasError('maxlength')
+        "
+      >
+        Description cannot be more than 1024 characters.
+      </mat-error>
+    </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Status</mat-label>
-            <mat-select formControlName="status">
-                <mat-option *ngFor="let status of statusList" [value]="status">{{status}}</mat-option>
-            </mat-select>
-        </mat-form-field>
+    <mat-form-field appearance="outline" appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option *ngFor="let status of statusList" [value]="status">{{
+          status
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-        <mat-form-field class="form-element">
-            <mat-label>Date</mat-label>
-            <input matInput formControlName="createDate">
-        </mat-form-field>
+    <mat-form-field class="form-element" appearance="outline">
+      <mat-label>Date</mat-label>
+      <input matInput formControlName="createDate" />
+    </mat-form-field>
 
-        <div class="form-element" [ngStyle]="{'text-align': 'end'}">
-            <button mat-raised-button color="primary" type="submit"
-                [disabled]="!ticketForm.valid">{{buttonTitle}}</button>
-            <button mat-raised-button class="btn" (click)="onUserCancel()" type="button" color="primary">Cancel</button>
-        </div>
+    <div class="form-element" [ngStyle]="{ 'text-align': 'end' }">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="(!ticketForm.dirty && ticketForm.valid) || !ticketForm.valid"
+      >
+        {{ buttonTitle }}
+      </button>
+      <button
+        mat-raised-button
+        class="btn"
+        (click)="onUserCancel()"
+        type="button"
+        color="primary"
+      >
+        Cancel
+      </button>
     </div>
+  </div>
 </form>

@@ -1,16 +1,25 @@
 <div class="parent-container">
-    <div class="option-container">
-        <div *ngIf="(storage.ticketList$ | async)as tickets">
-            <app-saerch-ticket *ngIf="tickets.length" (seachedText)="filterText($event)"></app-saerch-ticket>
-        </div>
-        <button mat-raised-button [routerLink]="['/create-ticket']" color="primary">Create New Ticket</button>
+  <div class="option-container">
+    <div *ngIf="storage.ticketList$ | async as tickets">
+      <app-search-ticket
+        *ngIf="tickets.length"
+        (seachedText)="filterText($event)"
+      ></app-search-ticket>
     </div>
+    <button mat-raised-button [routerLink]="['/create-ticket']" color="primary">
+      Create New Ticket
+    </button>
+  </div>
 
-    <ng-content *ngTemplateOutlet="listTemp"></ng-content>
+  <ng-content *ngTemplateOutlet="listTemp"></ng-content>
 </div>
 
 <ng-template #listTemp>
-    <ng-container *ngIf="(storage.ticketList$ | async)as tickets">
-        <app-table [ticketList]="tickets | filterData : filteredText" [displayedColumns]="displayedColumns" (openUserTicketDetails)="navigateToUserData($event)"></app-table>
-    </ng-container>
+  <ng-container *ngIf="storage.ticketList$ | async as tickets">
+    <app-table
+      [ticketList]="tickets | filterData: filteredText"
+      [displayedColumns]="displayedColumns"
+      (openUserTicketDetails)="navigateToUserData($event)"
+    ></app-table>
+  </ng-container>
 </ng-template>

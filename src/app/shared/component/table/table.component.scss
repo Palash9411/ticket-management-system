@@ -1,16 +1,25 @@
-table ,.paginator {
-    width: 96%;
-    margin: 2%;
+.table-container {
+
+    position: relative;
+    min-height: calc(100vh - 165px);
+    max-height: calc(100vh - 165px);
+    overflow: auto;
+
+
+  table,
+  .paginator {
+    width: 100%;
   }
 
-.message{
-  font-size: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: grey;
-  background-color: #fbfdff;
-  width: 96%;
-  height: 80vh;
-  margin: auto;
+  .message {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: grey;
+    background-color: #fbfdff;
+    width: 96%;
+    height: 80vh;
+    margin: auto;
+  }
 }

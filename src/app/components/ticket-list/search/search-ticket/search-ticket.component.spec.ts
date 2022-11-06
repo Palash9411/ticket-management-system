@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SaerchTicketComponent } from './saerch-ticket.component';
+import { SearchTicketComponent } from './search-ticket.component';
 
 describe('SaerchTicketComponent', () => {
-  let component: SaerchTicketComponent;
-  let fixture: ComponentFixture<SaerchTicketComponent>;
+  let component: SearchTicketComponent;
+  let fixture: ComponentFixture<SearchTicketComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SaerchTicketComponent ]
+      declarations: [ SearchTicketComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SaerchTicketComponent);
+    fixture = TestBed.createComponent(SearchTicketComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

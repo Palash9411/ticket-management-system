@@ -1,12 +1,16 @@
 <div class="main-container">
-    <mat-card class="form-container">
-        <mat-card-title>Create Ticket </mat-card-title>
-        <ng-content *ngTemplateOutlet="showForm"></ng-content>
-    </mat-card>
+  <mat-card class="form-container">
+    <mat-card-title>Create Ticket </mat-card-title>
+    <ng-content *ngTemplateOutlet="showForm"></ng-content>
+  </mat-card>
 </div>
 
 <!-- template to open form  -->
 <ng-template #showForm>
-    <app-form [formValue]="initialFormVal" (onUserSubmit)="onUserCreation($event)" (onCancel)="userCanceled()"
-        [buttonTitle]="'Save'"></app-form>
+  <app-form
+    [formValue]="initialFormVal"
+    (onUserSubmit)="onUserCreation($event)"
+    (onCancel)="userCanceled()"
+    [buttonTitle]="'Save'"
+  ></app-form>
 </ng-template>

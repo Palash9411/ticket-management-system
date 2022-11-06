@@ -10,9 +10,10 @@ import { HttpClientModule} from '@angular/common/http' ;
 import { MaterialModule } from './material.module';
 import { SharedModule } from './shared/shared.module';
 import { TicketDetailComponent } from './components/ticket-detail/ticket-detail.component';
-import { SaerchTicketComponent } from './components/ticket-list/search/saerch-ticket/saerch-ticket.component';
+
 import { FilterPipeModule } from './shared/pipes/filterPipe/filter-pipe.module';
 import { CustomDatePipeModule } from './shared/pipes/datePipe/custom-date.pipe.module';
+import { SearchTicketComponent } from './components/ticket-list/search/search-ticket/search-ticket.component';
 
 
 
@@ -22,7 +23,7 @@ import { CustomDatePipeModule } from './shared/pipes/datePipe/custom-date.pipe.m
     TicketListComponent,
     CreateTicketComponent,
     TicketDetailComponent ,
-    SaerchTicketComponent
+    SearchTicketComponent
   ],
   imports: [
     BrowserModule,
