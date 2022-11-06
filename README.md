@@ -8,6 +8,7 @@
 1.TimeZone - IST(Indian Standard Time ) used .
 2.Created a update button on list screen for updating a ticket .
 3.Mat Sort implemented for sorting , hover on label and click to sort .
+4.Title and Description are required fields on create ticket and update ticket screen . 
 
 ## Development server
 
